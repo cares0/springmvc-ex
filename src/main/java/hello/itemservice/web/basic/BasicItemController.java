@@ -68,10 +68,16 @@ public class BasicItemController {
         return "/basic/item";
     }
 
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String additemV4(Item item) { // ModelAttribute도 생략 가능
         itemRepository.save(item);
         return "/basic/item";
+    }
+
+    @PostMapping("/add")
+    public String additemV5(Item item) { // ModelAttribute도 생략 가능
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
@@ -88,6 +94,7 @@ public class BasicItemController {
 
         return "redirect:/basic/items/{itemId}";
     }
+
 
     /**
      * 테스트용 데이터 추가
